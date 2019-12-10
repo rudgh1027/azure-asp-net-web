@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: azure-asp-net-web
-          image: acr5rlumt764igom.azurecr.io/azure-asp-net-web:v1  ## replce with your ACR name
+          image: acr5rlumt764igom.azurecr.io/azure-asp-net-web:kube9  ## replce with your ACR name
           ports:
             - containerPort: 80
 ---
