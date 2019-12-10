@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: azure-asp-net-web
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: azure-asp-net-web
+    spec:
+      containers:
+        - name: azure-asp-net-web
+          image: acr5rlumt764igom.azurecr.io/azure-asp-net-web:v1  ## replce with your ACR name
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: azure-asp-net-lb
+spec:
+  ports:
+    - name: http-port
+      port: 8080
+      targetPort: 80
+  selector:
+    app: azure-asp-net-web
+  type: LoadBalancer
